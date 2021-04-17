@@ -1,0 +1,11 @@
+{
+  "name" : "users",
+  "ciType" : "Users",
+  "label" : "Users",
+  "active" : true,
+  "fields" : [ {
+    "name" : "name",
+    "attribute" : "name"
+  } ],
+  "editable" : "readonly"
+}

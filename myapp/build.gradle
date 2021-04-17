@@ -1,0 +1,57 @@
+plugins {
+	id 'java'
+}
+
+def versions = [jetty : '10.0.2']
+
+//def versions = [jetty : '9.4.40.v20210413']
+
+
+group = 'com.biocliq.myapp'
+
+repositories {
+	mavenLocal()
+	mavenCentral()	
+}
+
+sourceCompatibility = '11'
+
+dependencies {		
+	implementation 'com.zitlab.palmyra.api:palmyra-rest:0.2'
+	implementation 'com.zitlab.palmyra.api:palmyra-ws:0.2'
+	implementation 'com.zitlab.palmyra.api2db:api2db-base:0.2'
+	implementation 'com.zitlab.palmyra.api2db:api2db-service:0.2'
+	implementation 'com.zitlab.palmyra.api2db:api2db-springboothandler:0.2'
+	
+	implementation 'com.zitlab.palmyra.common:api2db-shared:1.0.0'
+	
+	implementation 'org.hsqldb:hsqldb:2.5.1'
+	
+//	implementation "com.zitlab.cinch:cinch-schema:0.1_alpha"
+	implementation "com.zitlab.cinch:cinch-core:0.1_alpha"
+	implementation "com.zitlab.cinch:common-util:0.1_alpha"
+	
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j18-impl
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j18-impl', version: '2.14.1'
+	
+	
+	
+	//compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+	
+	
+	implementation group: 'org.eclipse.jetty', name: 'jetty-webapp', version: "${versions.jetty}"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: "${versions.jetty}"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-http', version: "${versions.jetty}"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-util', version: "${versions.jetty}"
+	//implementation group: 'org.eclipse.jetty', name: 'jetty-servlet', version: "${versions.jetty}"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-security', version: "${versions.jetty}"
+	implementation group: 'org.eclipse.jetty', name: 'jetty-io', version: "${versions.jetty}"
+	implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.5'
+}
+
+
+jar {
+    exclude('com/zitlab/palmyra/jetty/**')
+    exclude('*.xml')
+    exclude('*.properties')
+}
