@@ -1,4 +1,4 @@
-package com.orgi.sdf;
+package com.biocliq.sample;
 
 import org.springframework.stereotype.Component;
 

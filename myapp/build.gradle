@@ -21,7 +21,7 @@ dependencies {
 	implementation 'com.zitlab.palmyra.api:palmyra-ws:0.2'
 	implementation 'com.zitlab.palmyra.api2db:api2db-base:0.2'
 	implementation 'com.zitlab.palmyra.api2db:api2db-service:0.2'
-	implementation 'com.zitlab.palmyra.api2db:api2db-springboothandler:0.2'
+	implementation 'com.zitlab.palmyra.api2db:scripthandler:0.2'
 	
 	implementation 'com.zitlab.palmyra.common:api2db-shared:1.0.0'
 	
