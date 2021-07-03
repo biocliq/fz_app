@@ -1,0 +1,83 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+version = '0.2'
+
+def versions = [jetty : '10.0.5']
+
+apply from: 'deps.gradle'
+
+
+group = 'com.biocliq.fluwiz'
+
+repositories {
+	mavenLocal()
+	mavenCentral()	
+}
+
+sourceCompatibility = '11'
+
+dependencies {		
+	api 'com.zitlab.palmyra.api:palmyra-rest:0.2'
+	api 'com.zitlab.palmyra.api:palmyra-server:0.2'
+	api 'com.zitlab.palmyra.api:palmyra-ws:0.2'
+	api 'com.zitlab.palmyra.api2db:api2db-base:0.2'
+	api 'com.zitlab.palmyra.api2db:api2db-service:0.2'
+	api 'com.zitlab.palmyra.api2db:scripthandler:0.2'
+	
+	api 'com.zitlab.palmyra.common:api2db-shared:1.0.0'
+	api 'org.hsqldb:hsqldb:2.5.1'
+	api "com.zitlab.cinch:cinch-core:0.1_alpha"
+	api "com.zitlab.cinch:common-util:0.1_alpha"
+	
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j18-impl', version: '2.14.1'
+		
+	api group: 'org.eclipse.jetty', name: 'jetty-webapp', version: "${versions.jetty}"
+	api group: 'org.eclipse.jetty', name: 'jetty-server', version: "${versions.jetty}"
+	api group: 'org.eclipse.jetty', name: 'jetty-http', version: "${versions.jetty}"
+	api group: 'org.eclipse.jetty', name: 'jetty-util', version: "${versions.jetty}"
+	api group: 'org.eclipse.jetty', name: 'jetty-security', version: "${versions.jetty}"
+	api group: 'org.eclipse.jetty', name: 'jetty-io', version: "${versions.jetty}"
+	api group: 'org.springframework', name: 'spring-webmvc', version: '5.3.5'
+}
+
+
+jar {
+    exclude('*.xml')
+    exclude('*.properties')
+}
+
+ task sourcesJar(type: Jar, dependsOn: classes) {
+	    classifier = 'sources'
+	    from sourceSets.main.allSource
+	}
+
+	tasks.withType(Test).configureEach {
+		maxParallelForks = 2
+	    //maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+	}
+
+    publishing {
+	    publications {
+	        mavenJava(MavenPublication) {
+	          from components.java
+
+	          artifact sourcesJar {
+	            classifier "sources"
+	          }
+	        }
+	     }
+	}
+
+    artifacts {
+    	archives sourcesJar
+    	//archives javadocJar
+	}
+
+	test {
+	    useTestNG {
+	        preserveOrder true
+	    }
+	}
