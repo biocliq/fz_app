@@ -1,4 +1,4 @@
-package com.fluwiz.server;
+package com.zitlab.palmyra.jetty;
 
 import com.biocliq.fluwiz.server.FluwizServer;
 
