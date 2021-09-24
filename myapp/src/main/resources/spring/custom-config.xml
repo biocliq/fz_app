@@ -26,7 +26,7 @@
 				<property name="authProviders">
 					<list>						
 						<bean
-							class="com.zitlab.palmyra.webservice.security.provider.NoAuthProvider"></bean>
+							class="com.zitlab.palmyra.webservice.security.provider.BasicAuthProvider"></bean>
 						<bean
 							class="com.zitlab.palmyra.webservice.security.provider.TrustedAuthProvider"></bean>
 					</list>
