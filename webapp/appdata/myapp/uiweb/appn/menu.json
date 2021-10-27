@@ -1,0 +1,5 @@
+{
+	"menuLabel" : "Application",
+	"menuCode" : "appn",
+	"parentMenu": "root"
+}
