@@ -7,10 +7,10 @@ def versions = [jetty : '10.0.6']
 group = 'com.biocliq.myapp'
 
 repositories {
-	mavenLocal()
-	//maven {
-	//	url="https://dl.fluwiz.com/repo/releases"
-	//}	
+	//mavenLocal()
+	maven {
+		url="https://dl.fluwiz.com/repo/releases"
+	}	
 	mavenCentral()	
 }
 

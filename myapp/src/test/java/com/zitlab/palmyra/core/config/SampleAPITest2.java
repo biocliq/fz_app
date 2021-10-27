@@ -32,7 +32,7 @@ import com.zitlab.palmyra.util.ErrorHelper;
 @AutoConfigureMockMvc	
 @SpringBootTest(classes = ApiConfiguration.class, properties = "spring.main.allow-bean-definition-overriding=true")
 @ExtendWith(SpringExtension.class)
-public class SampleAPITest {
+public class SampleAPITest2 {
 	
 	private final static String TEST_USER_ID = "user-id-123";
 	@Autowired
